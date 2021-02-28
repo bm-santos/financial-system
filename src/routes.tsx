@@ -16,7 +16,7 @@ export default function Routes() {
             <Route path="/" exact component={HomePage} />
             <Route path="/currency" exact component={CurrencyPage} />
             <Route path="/finance" exact component={FinancePage} />
-            <Route path="/404" exact component={PageNotFound} />
+            <Route path="*" component={PageNotFound} />
         </Switch>
 
     )

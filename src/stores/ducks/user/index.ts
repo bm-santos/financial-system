@@ -31,9 +31,10 @@ const userReducer: Reducer = (state = INITIAL_STATE, action: any) => {
                 ...state,
             }
         case UserTypes.GET_LOGIN_REQUEST:
+            localStorage.clear()
             return {
                 ...state,
-                loadingLogin: true
+                loadingLogin: true,
             }
         case UserTypes.GET_LOGIN_SUCCESS:
             localStorage.setItem("token", action.payload.data.accessToken)

@@ -1,16 +1,21 @@
+import axios from "axios"
 import api from "./api"
 
-export const RegisterService = {
-    createNewAccount: (request: any[]) => api.post('/register', request)
-}
-
-export const LoginService = {
+export const UserService = {
+    createNewAccount: (request: any[]) => api.post('/register', request),
     login: (request: any) => api.post('/login', request),
 }
 
-export const FinanceService = {
-    newFinanceRecord: (request: any) => api.post('/finance', request),
-    financeList: () => api.get('/finance'),
-    deleteFinanceRecord: (id: number) => api.delete(`/finance/${id}`),
-}
+const myToken = `Bearer ${localStorage.getItem("token")}`
 
+export const FinanceService = {
+    createRecord: (request: any) => api.post('/finance', request),
+
+    getList: () => api.get('/finance', {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+    }),
+
+    deleteRecord: (id: any) => api.delete(`/finance/${id}`),
+}

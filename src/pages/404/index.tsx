@@ -1,7 +1,10 @@
+import Sidebar from "../../components/DashboardSideBar";
+
 export default function PageNotFound() {
     return (
         <div>
-            <h1>PageNotFound</h1>
+            <Sidebar />
+            <h1>Oooops... Page not found</h1>
         </div>
     )
 }
