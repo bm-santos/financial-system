@@ -22,7 +22,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import DashboardCenterArea from "../../components/DashboardCenterArea";
-import Appbar from "../../components/DashboardAppBar";
+import DashboardAppbar from "../../components/DashboardAppBar";
 
 export default function HomePage() {
     const { isLogged } = useSelector((state: any) => state.userReducer)

@@ -4,9 +4,9 @@ import clsx from 'clsx';
 import MenuIcon from '@material-ui/icons/Menu';
 import { useState } from "react";
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { mainListItems, secondaryListItems } from '../../components/SidebarItems';
+import { mainListItems, secondaryListItems } from '../DashboardSideBarItems';
 
-export default function Appbar() {
+export default function DashboardAppbar() {
     const [open, setOpen] = useState(true);
 
     const handleDrawerOpen = () => {

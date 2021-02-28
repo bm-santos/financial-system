@@ -6,6 +6,7 @@ import CurrencyPage from "./pages/Currency";
 import FinancePage from "./pages/Finance";
 import PageNotFound from "./pages/404";
 import AuthenticationPage from "./pages/Authentication";
+import Dashboard from "./pages/Dashboard";
 
 export default function Routes() {
     return (
@@ -16,6 +17,7 @@ export default function Routes() {
             <Route path="/" exact component={HomePage} />
             <Route path="/currency" exact component={CurrencyPage} />
             <Route path="/finance" exact component={FinancePage} />
+            <Route path="/dashboard" component={Dashboard} />
             <Route path="*" component={PageNotFound} />
         </Switch>
 
