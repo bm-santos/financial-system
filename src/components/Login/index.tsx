@@ -15,10 +15,11 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
 import { Copyright, useStylesAuthentication } from "../styles";
+import { theme } from "../..";
 
 
 export default function LoginPage() {
-    const classes = useStylesAuthentication();
+    const classes = useStylesAuthentication(theme);
     const inputLoginEmail = useRef<HTMLInputElement>(null)
     const inputLoginPassword = useRef<HTMLInputElement>(null)
     const dispatch = useDispatch()
@@ -32,13 +33,9 @@ export default function LoginPage() {
         }
         return dispatch(getUserLoginRequest(request))
     }
-    useEffect(() => {
-        localStorage.clear()
-    }, [])
 
     return (
         <>
-            {isLogged && <p>Login was successful!</p>}
             {isLogged && <Redirect to={"/"} exact />}
             <Container component="main" maxWidth="xs">
                 <CssBaseline />

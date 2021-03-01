@@ -27,14 +27,16 @@ import Home from '@material-ui/icons/Home';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import EuroSymbol from '@material-ui/icons/EuroSymbol';
-import { makeStyles } from '@material-ui/core';
+import { Button, createMuiTheme, Dialog, DialogActions, DialogTitle, makeStyles } from '@material-ui/core';
 import FinancePage from '../Finance';
 import HomePage from '../Home';
 import { Redirect } from 'react-router';
+import { theme } from '../../index'
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme) => ({
+
+const useStyles = makeStyles((theme: any) => ({
     root: {
         display: 'flex',
     },
@@ -114,13 +116,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Dashboard() {
-    const classes = useStyles();
-    const [open, setOpen] = useState(true);
+    const classes = useStyles(theme);
+    const [open, setOpen] = useState(false);
 
     const [isHomeClicked, setIsHomeClicked] = useState(true);
     const [isCurrencyClicked, setIsCurrencyClicked] = useState(false);
     const [isFinanceClicked, setIsFinanceClicked] = useState(false);
     const [isLoggedOut, setIsLoggedOut] = useState(false);
+    const [openConfirmation, setOpenConfirmation] = useState(false);
 
     function logout() {
         setIsLoggedOut(true)
@@ -152,111 +155,135 @@ export default function Dashboard() {
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+    const handleClickOpen = () => {
+        setOpenConfirmation(true);
+    };
+
+    const handleClose = () => {
+        setOpenConfirmation(false);
+    };
     return (
-
-        <div className={classes.root}>
-            {isLoggedOut && <Redirect to={"/auth"} exact />}
-            {/* {localStorage.getItem("token") === null && <Redirect to={"/login"} exact />} */}
-            <CssBaseline />
-            <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-                <Toolbar className={classes.toolbar}>
-                    <IconButton
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        Dashboard
+        <>
+            <div className={classes.root}>
+                {isLoggedOut && <Redirect to={"/auth"} exact />}
+                {/* {localStorage.getItem("token") === null && <Redirect to={"/login"} exact />} */}
+                <CssBaseline />
+                <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+                    <Toolbar className={classes.toolbar}>
+                        <IconButton
+                            edge="start"
+                            color="inherit"
+                            aria-label="open drawer"
+                            onClick={handleDrawerOpen}
+                            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+                            MyFinance v2.8.2
           </Typography>
-                    <IconButton color="inherit">
-                        <Badge badgeContent={4} color="secondary">
-                            <NotificationsIcon />
-                        </Badge>
-                    </IconButton>
-                </Toolbar>
-            </AppBar>
-            <Drawer
-                variant="permanent"
-                classes={{
-                    paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-                }}
-                open={open}
-            >
-                <div className={classes.toolbarIcon}>
-                    <IconButton onClick={handleDrawerClose}>
-                        <ChevronLeftIcon />
-                    </IconButton>
-                </div>
-                <Divider />
-                <List>
-                    <ListItem button
-                        onClick={clicouHome}>
-                        <ListItemIcon>
-                            <Home />
-                        </ListItemIcon>
-                        <ListItemText primary="Home" />
-                    </ListItem>
-                    <ListItem button
-                        onClick={clicouCurrency}>
-                        <ListItemIcon>
-                            <EuroSymbol />
-                        </ListItemIcon>
-                        <ListItemText primary="Currency" />
-                    </ListItem>
-                    <ListItem button
-                        onClick={clicouFinance}>
-                        <ListItemIcon>
-                            <AccountBalanceWalletIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="My Finances" />
-                    </ListItem>
-                </List>
-                <Divider />
-                <List>
-                    <ListItem button
-                        onClick={logout}>
-                        <ListItemIcon>
-                            <ExitToAppIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Logout" />
-                    </ListItem>
-                </List>
-            </Drawer>
-            <main className={classes.content}>
-                <div className={classes.appBarSpacer} />
-                <Container maxWidth="lg" className={classes.container}>
-                    <Grid container spacing={3}>
-                        {/* Chart */}
-                        {/* <Grid item xs={12} md={8} lg={9}>
+                        <IconButton color="inherit">
+                            <Badge badgeContent={4} color="secondary">
+                                <NotificationsIcon />
+                            </Badge>
+                        </IconButton>
+                    </Toolbar>
+                </AppBar>
+                <Drawer
+                    variant="permanent"
+                    classes={{
+                        paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+                    }}
+                    open={open}
+                >
+                    <div className={classes.toolbarIcon}>
+                        <IconButton onClick={handleDrawerClose}>
+                            <ChevronLeftIcon />
+                        </IconButton>
+                    </div>
+                    <Divider />
+                    <List>
+                        <ListItem button
+                            onClick={clicouHome}>
+                            <ListItemIcon>
+                                <Home />
+                            </ListItemIcon>
+                            <ListItemText primary="Home" />
+                        </ListItem>
+                        <ListItem button
+                            onClick={clicouCurrency}>
+                            <ListItemIcon>
+                                <EuroSymbol />
+                            </ListItemIcon>
+                            <ListItemText primary="Currency" />
+                        </ListItem>
+                        <ListItem button
+                            onClick={clicouFinance}>
+                            <ListItemIcon>
+                                <AccountBalanceWalletIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="My Finances" />
+                        </ListItem>
+                    </List>
+                    <Divider />
+                    <List>
+                        <ListItem button
+                            onClick={handleClickOpen}>
+                            <ListItemIcon>
+                                <ExitToAppIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Logout" />
+                        </ListItem>
+                    </List>
+                </Drawer>
+                <main className={classes.content}>
+                    <div className={classes.appBarSpacer} />
+                    <Container maxWidth="lg" className={classes.container}>
+                        <Grid container spacing={3}>
+                            {/* Chart */}
+                            {/* <Grid item xs={12} md={8} lg={9}>
                             <Paper className={fixedHeightPaper}>
 
                             </Paper>
                         </Grid> */}
-                        {/* Recent Deposits */}
-                        {/* <Grid item xs={12} md={4} lg={3}>
+                            {/* Recent Deposits */}
+                            {/* <Grid item xs={12} md={4} lg={3}>
                             <Paper className={fixedHeightPaper}>
 
                             </Paper>
                         </Grid> */}
-                        {/* Recent Orders */}
-                        <Grid item xs={12}>
-                            <Paper className={classes.paper}>
-                                {isHomeClicked && <HomePage />}
-                                {isCurrencyClicked && <CurrencyPage />}
-                                {isFinanceClicked && <FinancePage />}
+                            {/* Recent Orders */}
+                            <Grid item xs={12}>
+                                <Paper className={classes.paper}>
+                                    {isHomeClicked && <HomePage />}
+                                    {isCurrencyClicked && <CurrencyPage />}
+                                    {isFinanceClicked && <FinancePage />}
 
-                            </Paper>
+                                </Paper>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                    <Box pt={4}>
-                        <Copyright />
-                    </Box>
-                </Container>
-            </main>
-        </div >
+                        <Box pt={4}>
+                            <Copyright />
+                        </Box>
+                    </Container>
+                </main>
+                <Dialog
+                    open={openConfirmation}
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">{"Do you want to leave?"}</DialogTitle>
+                    <DialogActions>
+                        <Button onClick={handleClose} color="primary">
+                            GO BACK
+                        </Button>
+                        <a href="/login"><Button variant="text" onClick={handleClose} color="inherit" autoFocus>
+                            LOGOUT
+                        </Button></a>
+                    </DialogActions>
+                </Dialog>
+            </div >
+        </>
     );
 }

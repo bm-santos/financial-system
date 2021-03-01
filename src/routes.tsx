@@ -4,7 +4,6 @@ import RegisterPage from "./components/Register";
 import HomePage from "./pages/Home";
 import CurrencyPage from "./pages/Currency";
 import FinancePage from "./pages/Finance";
-import PageNotFound from "./pages/404";
 import AuthenticationPage from "./pages/Authentication";
 import Dashboard from "./pages/Dashboard";
 
@@ -18,7 +17,7 @@ export default function Routes() {
             <Route path="/currency" exact component={CurrencyPage} />
             <Route path="/finance" exact component={FinancePage} />
             <Route path="/" exact component={Dashboard} />
-            <Route path="*" component={PageNotFound} />
+            <Route path="*" component={LoginPage} />
         </Switch>
 
     )

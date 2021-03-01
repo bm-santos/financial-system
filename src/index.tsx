@@ -6,6 +6,19 @@ import { BrowserRouter } from 'react-router-dom';
 import Routes from './routes';
 import store from './stores';
 import { Toaster } from 'react-hot-toast';
+import { green, purple } from '@material-ui/core/colors';
+import { createMuiTheme } from '@material-ui/core';
+
+export const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: purple[500],
+    },
+    secondary: {
+      main: green[500],
+    },
+  },
+});
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,7 +29,7 @@ ReactDOM.render(
           reverseOrder={false}
           toastOptions={{
             success: {
-              duration: 3000,
+              duration: 2000,
             },
             loading: {
               duration: 10,

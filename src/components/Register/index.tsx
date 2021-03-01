@@ -19,6 +19,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 import { Copyright, useStylesAuthentication } from "../styles";
+import { theme } from "../..";
 
 export default function RegisterPage() {
     const inputRegisterEmail = useRef<HTMLInputElement>(null)
@@ -27,7 +28,7 @@ export default function RegisterPage() {
 
     const { isRegistered } = useSelector((state: any) => state.userReducer)
 
-    const classes = useStylesAuthentication();
+    const classes = useStylesAuthentication(theme);
 
     const register = () => {
         const request = {
