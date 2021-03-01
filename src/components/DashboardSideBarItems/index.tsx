@@ -3,12 +3,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Home from '@material-ui/icons/Home';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import PeopleIcon from '@material-ui/icons/People';
-import BarChartIcon from '@material-ui/icons/BarChart';
-import LayersIcon from '@material-ui/icons/Layers';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet'; import EuroSymbol from '@material-ui/icons/EuroSymbol';
+import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
+import EuroSymbol from '@material-ui/icons/EuroSymbol';
 
 export const mainListItems = (
     <div>

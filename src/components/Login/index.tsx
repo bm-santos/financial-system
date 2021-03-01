@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { Redirect } from "react-router"
 import { getUserLoginRequest } from "../../stores/ducks/user/actions"
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -32,6 +32,9 @@ export default function LoginPage() {
         }
         return dispatch(getUserLoginRequest(request))
     }
+    useEffect(() => {
+        localStorage.clear()
+    }, [])
 
     return (
         <>
@@ -44,7 +47,7 @@ export default function LoginPage() {
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Login
+                        Welcome back :)
                 </Typography>
                     <form className={classes.form} noValidate>
                         <Grid container spacing={2}>

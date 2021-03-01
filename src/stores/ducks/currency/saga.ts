@@ -11,7 +11,7 @@ export function* currenciesListRequest() {
         toast.success('Currencies loaded with success!')
     } catch (err) {
         yield put(getCurrenciesFailure())
-        toast.error('Hmmm... check your internet connection!')
+        toast.error('Hmmm... CORS attacks again :(')
     }
 }
 

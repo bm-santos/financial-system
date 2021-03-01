@@ -5,6 +5,7 @@ import { getCurrenciesRequest, getCurrencyDetailsRequest } from "../../stores/du
 
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import { Redirect } from "react-router";
 
 export default function CurrencyPage() {
 
@@ -19,7 +20,7 @@ export default function CurrencyPage() {
 
     useEffect(() => {
         dispatch(getCurrenciesRequest())
-    }, [])
+    }, [localStorage.getItem("token")])
 
     const currencySelected = (currency: any) => {
         dispatch(getCurrencyDetailsRequest(currency))
@@ -29,8 +30,7 @@ export default function CurrencyPage() {
 
     return (
         <>
-
-            <Sidebar />
+            {localStorage.getItem("token") === null && <Redirect to={"/login"} exact />}
             <h2>Currencies List</h2>
             <div>
                 <Autocomplete

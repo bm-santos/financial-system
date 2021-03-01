@@ -7,11 +7,7 @@ export default function AuthenticationPage() {
     return (
         <>
             <h1>Auth</h1>
-            {(myToken !== null && isLogged) &&
-                <Redirect to={"/"} exact />}
-            {(myToken === null && !isLogged) &&
-                <Redirect to={"/register"} exact />}
-            {(myToken !== null && !isLogged) &&
+            {(myToken === null || !isLogged) &&
                 <Redirect to={"/login"} exact />}
             {}
         </>

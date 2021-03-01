@@ -14,10 +14,10 @@ export default function Routes() {
             <Route path="/auth" exact component={AuthenticationPage} />
             <Route path="/login" exact component={LoginPage} />
             <Route path="/register" exact component={RegisterPage} />
-            <Route path="/" exact component={HomePage} />
+            <Route path="/home" exact component={HomePage} />
             <Route path="/currency" exact component={CurrencyPage} />
             <Route path="/finance" exact component={FinancePage} />
-            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/" exact component={Dashboard} />
             <Route path="*" component={PageNotFound} />
         </Switch>
 

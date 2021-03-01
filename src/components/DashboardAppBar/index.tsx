@@ -1,5 +1,5 @@
 import { AppBar, Divider, Drawer, IconButton, List, Toolbar, Typography } from "@material-ui/core";
-import { useStylesDashboard } from "../styles";
+import { useStyles } from "../styles";
 import clsx from 'clsx';
 import MenuIcon from '@material-ui/icons/Menu';
 import { useState } from "react";
@@ -16,7 +16,7 @@ export default function DashboardAppbar() {
         setOpen(false);
     };
 
-    const classes = useStylesDashboard();
+    const classes = useStyles();
     return (
         <>
             <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>

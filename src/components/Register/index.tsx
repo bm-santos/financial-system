@@ -47,7 +47,7 @@ export default function RegisterPage() {
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        New account
+                        Create new account
                 </Typography>
                     <form className={classes.form} noValidate>
                         <Grid container spacing={2}>

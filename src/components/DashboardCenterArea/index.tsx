@@ -1,10 +1,10 @@
 import { Box, Container, Grid, Paper } from "@material-ui/core";
-import { Copyright, useStylesDashboard } from "../styles";
+import { Copyright, useStyles } from "../styles";
 import clsx from 'clsx';
 
 
 export default function DashboardCenterArea() {
-    const classes = useStylesDashboard();
+    const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
         <main className={classes.content}>

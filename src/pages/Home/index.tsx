@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux"
 import { Redirect } from "react-router"
 import Sidebar from "../../components/DashboardSideBar"
-import { useStylesDashboard } from "../../components/styles";
+import { useStyles } from "../../components/styles";
 import clsx from 'clsx';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
@@ -27,27 +27,14 @@ import DashboardAppbar from "../../components/DashboardAppBar";
 export default function HomePage() {
     const { isLogged } = useSelector((state: any) => state.userReducer)
 
-    const classes = useStylesDashboard();
-    const [open, setOpen] = useState(true);
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
-    const handleDrawerClose = () => {
-        setOpen(false);
-    };
-    const myToken = localStorage.getItem("token")
-
     return (
         <>
-            {!isLogged && myToken === null && <Redirect to={"/auth"} exact />}
-            < Sidebar />
-            <h1>Welcome home</h1>
-            {/* <div className={classes.root}>
-                <CssBaseline />
-                <Appbar />
-
-                <DashboardCenterArea />
-            </div> */}
+            {(!isLogged || localStorage.getItem("token") === null) && <Redirect to={"/login"} exact />}
+            <h1>Welcome</h1>
+            <p>Controle seus gastos com o MyFinance, é fácil de usar e
+            sem complicação.</p>
+            <p>Com o MyFinance, você tem todos os dados financeiros
+                em uma única plataforma.</p>
         </>
 
     )

@@ -4,12 +4,14 @@ import Sidebar from "../../components/DashboardSideBar";
 import { useDispatch } from "react-redux";
 import { getFinanceListRequest } from "../../stores/ducks/finance/actions";
 import { useEffect } from "react";
+import { Redirect } from "react-router";
 
 export default function FinancePage() {
 
     return (
         <div>
-            <Sidebar />
+
+            {localStorage.getItem("token") === null && <Redirect to={"/login"} exact />}
             <FinancePost />
             <FinanceList />
         </div>

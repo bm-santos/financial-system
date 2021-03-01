@@ -71,7 +71,7 @@ export const useStylesAuthentication = makeStyles((theme) => ({
 }));
 
 
-export const useStylesDashboard = makeStyles((theme) => ({
+export const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
     },
