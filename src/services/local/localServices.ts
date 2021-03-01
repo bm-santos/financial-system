@@ -1,4 +1,3 @@
-import axios from "axios"
 import api from "./api"
 
 export const UserService = {
@@ -6,10 +5,12 @@ export const UserService = {
     login: (request: any) => api.post('/login', request),
 }
 
-const myToken = `Bearer ${localStorage.getItem("token")}`
-
 export const FinanceService = {
-    createRecord: (request: any) => api.post('/finance', request),
+    createRecord: (request: any) => api.post('/finance', request, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+    }),
 
     getList: () => api.get('/finance', {
         headers: {
@@ -17,5 +18,9 @@ export const FinanceService = {
         }
     }),
 
-    deleteRecord: (id: any) => api.delete(`/finance/${id}`),
+    deleteRecord: (id: any) => api.delete(`/finance/${id}`, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+    }),
 }

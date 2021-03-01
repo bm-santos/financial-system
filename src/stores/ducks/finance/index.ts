@@ -35,7 +35,6 @@ const financeReducer: Reducer = (state = INITIAL_STATE, action: any) => {
                 isGetfinanceListLoaded: true,
             }
         case FinanceTypes.GET_FINANCE_LIST_SUCCESS:
-            console.log(action.payload)
             return {
                 ...state,
                 isGetfinanceListLoaded: false,
@@ -51,7 +50,6 @@ const financeReducer: Reducer = (state = INITIAL_STATE, action: any) => {
                 isFinanceRecordDeleteLoadedd: true,
             }
         case FinanceTypes.DELETE_FINANCE_RECORD_SUCCESS:
-            console.log(action.payload)
             return {
                 ...state,
                 isFinanceRecordDeleteLoadedd: false,

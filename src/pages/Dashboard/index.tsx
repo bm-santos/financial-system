@@ -8,26 +8,22 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import { useState } from 'react';
 import { Copyright } from '../../components/styles';
-import CurrencyPage from '../Currency';
+import CurrencyPage from '../../components/Currency';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import Home from '@material-ui/icons/Home';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import EuroSymbol from '@material-ui/icons/EuroSymbol';
-import { Button, createMuiTheme, Dialog, DialogActions, DialogTitle, makeStyles } from '@material-ui/core';
+import { Button, Dialog, DialogActions, DialogTitle, makeStyles } from '@material-ui/core';
 import FinancePage from '../Finance';
 import HomePage from '../Home';
 import { Redirect } from 'react-router';
@@ -146,7 +142,6 @@ export default function Dashboard() {
         setIsFinanceClicked(true)
     }
 
-    console.log('Home', isHomeClicked)
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -181,12 +176,7 @@ export default function Dashboard() {
                         </IconButton>
                         <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                             MyFinance v2.8.2
-          </Typography>
-                        <IconButton color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <NotificationsIcon />
-                            </Badge>
-                        </IconButton>
+                        </Typography>
                     </Toolbar>
                 </AppBar>
                 <Drawer

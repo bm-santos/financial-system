@@ -13,6 +13,7 @@ export function* userRegisterRequest(request: any) {
         toast.success('Account created with success')
     } catch (err) {
         yield put(getUserRegisterFailure())
+        toast.error('Have you been here before?')
     }
 }
 
@@ -25,5 +26,6 @@ export function* userLoginRequest(request: any) {
         toast.success('Logged with success')
     } catch (err) {
         yield put(getUserLoginFailure())
+        toast.error('Check your email and password')
     }
 }

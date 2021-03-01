@@ -19,7 +19,6 @@ const userReducer: Reducer = (state = INITIAL_STATE, action: any) => {
                 loadingRegister: true
             }
         case UserTypes.GET_REGISTER_SUCCESS:
-            console.log(action.payload)
             return {
                 ...state,
                 loadingRegister: false,
