@@ -22,29 +22,30 @@ const currencyReducer: Reducer = (state = INITIAL_STATE, action: any) => {
             cList.push(Object.keys(action.payload))
             return {
                 ...state,
-                currenciesList: cList[0],
+                currenciesList: Object.keys(action.payload),
                 loadingCurrency: false
             }
         case CurrenciesTypes.GET_CURRENCIES_FAILURE:
             return {
                 ...state,
-                loadingCurrency: false,
-                failedGetList: true
+                loadingCurrency: false
             }
         case CurrenciesTypes.GET_CURRENCY_DETAILS_REQUEST:
             return {
                 ...state,
-                selectedCurrencyDetails: []
+                loadingCurrency: true
             }
         case CurrenciesTypes.GET_CURRENCY_DETAILS_SUCCESS:
-            sCurrencyDetails.push(Object.keys(action.payload.data))
             return {
                 ...state,
-                selectedCurrencyDetails: action.payload.data
+                selectedCurrencyDetails: action.payload.data,
+                loadingCurrency: false
             }
         case CurrenciesTypes.GET_CURRENCY_DETAILS_FAILURE:
-            return state
-
+            return {
+                ...state,
+                loadingCurrency: false
+            }
         default:
             return state
     }

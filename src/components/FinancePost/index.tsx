@@ -1,6 +1,6 @@
 import { Button, FormControlLabel, Radio, RadioGroup, TextField } from "@material-ui/core";
 import { useRef, useState } from "react"
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getListRequest, postRecordRequest } from "../../stores/ducks/finance/actions";
 
 export default function FinancePost() {
@@ -25,12 +25,11 @@ export default function FinancePost() {
         <>
             <h1>Save new finance</h1>
             <RadioGroup aria-label="finance" name="finance" value={financeType} onChange={handleRadioChange}>
-                <FormControlLabel value="despesa" control={<Radio />} label="Spend" />
+                <FormControlLabel value="despesa" control={<Radio />} label='Spend' />
                 <FormControlLabel value="recebimento" control={<Radio />} label="Income" />
             </RadioGroup>
-            <TextField defaultValue="R$ " inputRef={inputFinanceRecord}>Teste</TextField>
+            <TextField defaultValue="R$ " inputRef={inputFinanceRecord}></TextField>
             <Button
-
                 variant="contained"
                 color="primary"
                 onClick={send}>Send</Button>

@@ -3,6 +3,8 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getListRequest, deleteRecordRequest } from "../../stores/ducks/finance/actions";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 
 export default function FinanceList() {
     const { financeList } = useSelector((state: any) => state.financeReducer)
@@ -34,7 +36,9 @@ export default function FinanceList() {
                     {financeList?.map((row: any) => (
                         <TableRow key={row.id}>
                             <TableCell>{row.id}</TableCell>
-                            <TableCell>{row.type}</TableCell>
+                            <TableCell>
+                                {row.type === 'despesa' ? <RemoveCircleIcon /> : <AddCircleIcon />}
+                            </TableCell>
                             <TableCell>{row.amount}</TableCell>
                             <TableCell align="right">
                                 <DeleteForeverIcon

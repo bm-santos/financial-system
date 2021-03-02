@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { UserService } from "../../../services/local/localServices";
 import { getUserLoginFailure, getUserLoginSuccess, getUserRegisterFailure, getUserRegisterSuccess } from "./actions";
 
-export function* userRegisterRequest(request: any) {
+export function* userRegisterSaga(request: any) {
 
     const bodyRequest = request.payload
     try {
@@ -17,7 +17,7 @@ export function* userRegisterRequest(request: any) {
     }
 }
 
-export function* userLoginRequest(request: any) {
+export function* userLoginSaga(request: any) {
 
     const bodyRequest = request.payload
     try {

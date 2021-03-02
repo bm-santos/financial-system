@@ -19,9 +19,13 @@ export default function CurrencyPage(): JSX.Element {
     const [value, setValue] = useState<string | null>(currenciesList[0]);
     const [inputValue, setInputValue] = useState('');
 
+    console.log('currenciesList', currenciesList)
+    console.log('selectedCurrencyDetails', selectedCurrencyDetails)
 
     useEffect(() => {
         dispatch(getCurrenciesRequest())
+        setInputValue('')
+        setSelectedCurrency('')
     }, [])
 
     const currencySelected = (currency: any) => {
