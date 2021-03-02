@@ -6,10 +6,11 @@ import LanguageIcon from '@material-ui/icons/Language';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { Redirect } from "react-router";
+import toast from "react-hot-toast";
 
 export default function CurrencyPage(): JSX.Element {
 
-    const { currenciesList, selectedCurrencyDetails } = useSelector((state: any) => state.currencyReducer)
+    const { currenciesList, selectedCurrencyDetails, failedGetList } = useSelector((state: any) => state.currencyReducer)
     const dispatch = useDispatch();
     const [selectedCurrency, setSelectedCurrency] = useState<string>('')
 
@@ -17,6 +18,7 @@ export default function CurrencyPage(): JSX.Element {
 
     const [value, setValue] = useState<string | null>(currenciesList[0]);
     const [inputValue, setInputValue] = useState('');
+
 
     useEffect(() => {
         dispatch(getCurrenciesRequest())

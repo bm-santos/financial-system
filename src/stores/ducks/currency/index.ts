@@ -5,7 +5,8 @@ const INITIAL_STATE: any = {
     currenciesObject: {},
     currenciesList: [],
     selectedCurrencyDetails: [],
-    loadingCurrency: false
+    loadingCurrency: false,
+    failedGetList: false
 }
 
 const currencyReducer: Reducer = (state = INITIAL_STATE, action: any) => {
@@ -27,7 +28,8 @@ const currencyReducer: Reducer = (state = INITIAL_STATE, action: any) => {
         case CurrenciesTypes.GET_CURRENCIES_FAILURE:
             return {
                 ...state,
-                loadingCurrency: false
+                loadingCurrency: false,
+                failedGetList: true
             }
         case CurrenciesTypes.GET_CURRENCY_DETAILS_REQUEST:
             return {

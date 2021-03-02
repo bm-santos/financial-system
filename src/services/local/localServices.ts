@@ -12,11 +12,7 @@ export const FinanceService = {
         }
     }),
 
-    getList: () => api.get('/finance', {
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`
-        }
-    }),
+    getList: () => { api.get('/finance', { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }, }); },
 
     deleteRecord: (id: any) => api.delete(`/finance/${id}`, {
         headers: {

@@ -11,7 +11,7 @@ export function* currenciesListRequest() {
         toast.success('Currencies loaded with success!')
     } catch (err) {
         yield put(getCurrenciesFailure())
-        toast.error('Hmmm... CORS error :(')
+        toast.error('CORS error! Validate your browser: https://cors-anywhere.herokuapp.com/corsdemo')
     }
 }
 
