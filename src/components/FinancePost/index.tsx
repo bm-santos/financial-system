@@ -17,15 +17,20 @@ export default function FinancePost() {
             type: financeType,
             amount: inputFinanceRecord?.current?.value
         }
-        dispatch(postRecordRequest(request))
-        dispatch(getListRequest())
+        if (financeType !== '' && inputFinanceRecord?.current?.value !== 'R$ ') {
+            dispatch(postRecordRequest(request))
+            dispatch(getListRequest())
+        } else {
+
+        }
     }
+    console.log(financeType)
 
     return (
         <>
             <h1>Save new finance</h1>
             <RadioGroup aria-label="finance" name="finance" value={financeType} onChange={handleRadioChange}>
-                <FormControlLabel value="despesa" control={<Radio />} label='Spend' />
+                <FormControlLabel value="despesa" control={<Radio />} label="Spend" />
                 <FormControlLabel value="recebimento" control={<Radio />} label="Income" />
             </RadioGroup>
             <TextField defaultValue="R$ " inputRef={inputFinanceRecord}></TextField>
