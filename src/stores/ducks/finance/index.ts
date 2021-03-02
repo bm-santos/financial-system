@@ -14,48 +14,48 @@ const INITIAL_STATE: any = {
 
 const financeReducer: Reducer = (state = INITIAL_STATE, action: any) => {
     switch (action.type) {
-        case FinanceTypes.POST_FINANCE_RECORD_REQUEST:
+        case FinanceTypes.POST_RECORD_REQUEST:
             return {
                 ...state,
                 isFinanceRecordPostLoaded: true,
             }
-        case FinanceTypes.POST_FINANCE_RECORD_SUCCESS:
+        case FinanceTypes.POST_RECORD_SUCCESS:
             return {
                 ...state,
                 isFinanceRecordPostLoaded: false,
                 isFinanceRecordPosted: true,
             }
-        case FinanceTypes.POST_FINANCE_RECORD_FAILURE:
+        case FinanceTypes.POST_RECORD_FAILURE:
             return {
                 ...state,
             }
-        case FinanceTypes.GET_FINANCE_LIST_REQUEST:
+        case FinanceTypes.GET_LIST_REQUEST:
             return {
                 ...state,
                 isGetfinanceListLoaded: true,
             }
-        case FinanceTypes.GET_FINANCE_LIST_SUCCESS:
+        case FinanceTypes.GET_LIST_SUCCESS:
             return {
                 ...state,
                 isGetfinanceListLoaded: false,
                 financeList: action.payload.data,
             }
-        case FinanceTypes.GET_FINANCE_LIST_FAILURE:
+        case FinanceTypes.GET_LIST_FAILURE:
             return {
                 ...state,
             }
-        case FinanceTypes.DELETE_FINANCE_RECORD_REQUEST:
+        case FinanceTypes.DELETE_RECORD_REQUEST:
             return {
                 ...state,
                 isFinanceRecordDeleteLoadedd: true,
             }
-        case FinanceTypes.DELETE_FINANCE_RECORD_SUCCESS:
+        case FinanceTypes.DELETE_RECORD_SUCCESS:
             return {
                 ...state,
                 isFinanceRecordDeleteLoadedd: false,
                 isFinanceRecordDeleted: true,
             }
-        case FinanceTypes.DELETE_FINANCE_RECORD_FAILURE:
+        case FinanceTypes.DELETE_RECORD_FAILURE:
             return {
                 ...state,
             }

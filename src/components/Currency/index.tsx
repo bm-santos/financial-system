@@ -6,7 +6,7 @@ import LanguageIcon from '@material-ui/icons/Language';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { Redirect } from "react-router";
-import toast from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 export default function CurrencyPage(): JSX.Element {
 
@@ -35,6 +35,7 @@ export default function CurrencyPage(): JSX.Element {
 
     return (
         <>
+            {failedGetList && <Toaster />}
             {localStorage.getItem("token") === null && <Redirect to={"/login"} exact />}
             <h1>Currencies List</h1>
             <div>

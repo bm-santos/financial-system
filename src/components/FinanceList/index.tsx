@@ -1,9 +1,8 @@
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getFinanceListRequest } from "../../stores/ducks/finance/actions";
+import { getListRequest, deleteRecordRequest } from "../../stores/ducks/finance/actions";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import { delFinanceRecordRequest } from "../../stores/ducks/finance/saga";
 
 export default function FinanceList() {
     const { financeList } = useSelector((state: any) => state.financeReducer)
@@ -11,8 +10,13 @@ export default function FinanceList() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getFinanceListRequest())
+        dispatch(getListRequest())
     }, [])
+
+    const deleteItem = (id: number) => {
+        dispatch(deleteRecordRequest(id))
+        dispatch(getListRequest())
+    }
 
     return (
         <>
@@ -34,7 +38,7 @@ export default function FinanceList() {
                             <TableCell>{row.amount}</TableCell>
                             <TableCell align="right">
                                 <DeleteForeverIcon
-                                    onClick={() => dispatch(delFinanceRecordRequest(row.id))}
+                                    onClick={() => deleteItem(row.id)}
                                 />
                             </TableCell>
                         </TableRow>

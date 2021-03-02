@@ -4,8 +4,7 @@ import { CurrenciesTypes } from "./currency/types"
 import { userLoginRequest, userRegisterRequest } from "./user/saga"
 import { UserTypes } from "./user/types"
 import { FinanceTypes } from "./finance/types"
-import { } from "./finance/saga"
-import { getFinanceListRequest, postFinanceRecordRequest, deleteFinanceRecordRequest } from "./finance/actions"
+import { deleteRecordSaga, getListSaga, postRecordSaga } from "./finance/saga"
 
 export default function* rootSaga(): any {
   return yield all([
@@ -15,8 +14,8 @@ export default function* rootSaga(): any {
     takeLatest(UserTypes.GET_REGISTER_REQUEST, userRegisterRequest),
     takeLatest(UserTypes.GET_LOGIN_REQUEST, userLoginRequest),
 
-    takeLatest(FinanceTypes.POST_FINANCE_RECORD_REQUEST, postFinanceRecordRequest),
-    takeLatest(FinanceTypes.GET_FINANCE_LIST_REQUEST, getFinanceListRequest),
-    takeLatest(FinanceTypes.DELETE_FINANCE_RECORD_REQUEST, deleteFinanceRecordRequest),
+    takeLatest(FinanceTypes.POST_RECORD_REQUEST, postRecordSaga),
+    takeLatest(FinanceTypes.GET_LIST_REQUEST, getListSaga),
+    takeLatest(FinanceTypes.DELETE_RECORD_REQUEST, deleteRecordSaga),
   ])
 }

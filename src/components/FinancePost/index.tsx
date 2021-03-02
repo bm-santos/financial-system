@@ -1,7 +1,7 @@
 import { Button, FormControlLabel, Radio, RadioGroup, TextField } from "@material-ui/core";
 import { useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { postFinanceRecordRequest } from "../../stores/ducks/finance/actions";
+import { getListRequest, postRecordRequest } from "../../stores/ducks/finance/actions";
 
 export default function FinancePost() {
     const inputFinanceRecord = useRef<HTMLInputElement>(null)
@@ -17,7 +17,8 @@ export default function FinancePost() {
             type: financeType,
             amount: inputFinanceRecord?.current?.value
         }
-        dispatch(postFinanceRecordRequest(request))
+        dispatch(postRecordRequest(request))
+        dispatch(getListRequest())
     }
 
     return (
